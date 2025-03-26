@@ -12,7 +12,7 @@ class BlogRepository {
         val response = blogApiService.getBlogs()
         return if (response.isSuccessful) {
             val blogPosts = response.body()
-            Log.d("BlogRepository", "Response: ${response.raw()}")
+            Log.d("BlogRepository", "Response: ${response.body()}")
 
             blogPosts?.results
         } else {
