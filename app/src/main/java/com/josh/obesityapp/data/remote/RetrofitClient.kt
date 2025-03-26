@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
     private const val BASE_URL_OBESITY = "https://obesityml.onrender.com"
-    private const val BASE_URL_BLOG = ""
+    private const val BASE_URL_BLOG = "https://40v865zp.api.sanity.io/"
 
     private val retrofitObesity: Retrofit by lazy {
         Retrofit.Builder()

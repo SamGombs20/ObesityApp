@@ -17,7 +17,7 @@ interface BlogApiService {
             "                body,\n" +
             "                mainImage,\n" +
             "                publishedAt,\n" +
-            "                author->{_id, name, bio, image}\n" +
+            "                author->{_id, name, bio}\n" +
             "            }")
         suspend fun getBlogs(): List<Blog>
 

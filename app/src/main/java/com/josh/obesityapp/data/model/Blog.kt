@@ -23,6 +23,5 @@ data class Author(
     @SerializedName("_id")
     val authorId: String,
     val name: String,
-    val bio: String,
-    val image: Image?
+    val bio: String
 )
