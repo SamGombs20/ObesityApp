@@ -4,7 +4,7 @@ import com.josh.obesityapp.R
 
 sealed class NavigationItem(var route: String, var icon: Int, var title: String){
     data object Home:NavigationItem("home", R.drawable.home, "Home")
-    data object Blog:NavigationItem("blog", R.drawable.blog, "Blog")
+    data object Blog:NavigationItem("blog", R.drawable.blog, "com.josh.obesityapp.data.model.Blog")
 }
 sealed class NestedNavigationItem(var route: String){
     data object CollectData:NestedNavigationItem("home_collect_data")

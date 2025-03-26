@@ -4,15 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class Blog(
     @SerializedName("_id")
-    val blogId:String,
-    val title:String,
+    val blogId: String,
+    val title: String,
     val slug: Slug,
-    val body:List<BodyBlock>,
-    val mainImage: Image?,
-    val author: Author,
+    val body: List<BodyBlock>,
+    val mainImage: Image?, // Updated to match resolved reference
+    val author: Author, // Updated to match resolved reference
     val publishedAt: String
 )
+
 data class Slug(val current: String)
+
 data class BodyBlock(val children: List<TextBlock>)
 data class TextBlock(val text: String)
 
@@ -25,4 +27,6 @@ data class Author(
     val name: String,
     val bio: String
 )
-data class SanityResponse(val results: List<Blog>)
+
+// Wrapper for Sanity API Response
+data class SanityResponse(val result: List<Blog>)

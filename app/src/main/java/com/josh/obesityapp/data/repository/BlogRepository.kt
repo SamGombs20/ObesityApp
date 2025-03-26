@@ -14,7 +14,7 @@ class BlogRepository {
             val blogPosts = response.body()
             Log.d("BlogRepository", "Response: ${response.body()}")
 
-            blogPosts?.results
+            blogPosts?.result
         } else {
             Log.e("BlogRepository", "Error fetching blog posts: ${response.raw()}")
             null
