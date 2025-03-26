@@ -12,6 +12,8 @@ class BlogRepository {
         val response = blogApiService.getBlogs()
         return if (response.isSuccessful) {
             val blogPosts = response.body()
+            Log.d("BlogRepository", "Response: ${response.raw()}")
+
             blogPosts?.results
         } else {
             Log.e("BlogRepository", "Error fetching blog posts: ${response.raw()}")
