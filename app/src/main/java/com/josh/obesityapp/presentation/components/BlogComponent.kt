@@ -15,6 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
@@ -52,7 +53,8 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
                         color = customDarkGreen,
-                        fontWeight = FontWeight(400)
+                        fontWeight = FontWeight(400),
+                        fontSize = 12 .sp
                     )
                 }
             }
