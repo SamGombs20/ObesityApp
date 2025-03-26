@@ -13,9 +13,10 @@ import com.josh.obesityapp.presentation.viewmodel.BlogViewModel
 @Composable
 fun BlogScreen(blogViewModel: BlogViewModel){
     val blogs by blogViewModel.blogs.collectAsState()
+    val isConnected by blogViewModel.isConnected.collectAsState()
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
         Text(
-            text = blogs[0].title
+            text = if (isConnected) blogs[0].title else "No internet connection"
         )
     }
 }
