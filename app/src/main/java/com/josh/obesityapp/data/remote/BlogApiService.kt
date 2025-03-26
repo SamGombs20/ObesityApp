@@ -1,6 +1,5 @@
 package com.josh.obesityapp.data.remote
 
-import com.josh.obesityapp.data.model.Blog
 import com.josh.obesityapp.data.model.SanityResponse
 import retrofit2.Response
 import retrofit2.http.GET

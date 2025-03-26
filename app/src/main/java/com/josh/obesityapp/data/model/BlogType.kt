@@ -2,7 +2,7 @@ package com.josh.obesityapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Blog(
+data class BlogType(
     @SerializedName("_id")
     val blogId: String,
     val title: String,
@@ -29,4 +29,4 @@ data class Author(
 )
 
 // Wrapper for Sanity API Response
-data class SanityResponse(val result: List<Blog>)
+data class SanityResponse(val result: List<BlogType>)

@@ -3,15 +3,15 @@ package com.josh.obesityapp.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.josh.obesityapp.data.model.Blog
+import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.data.repository.BlogRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class BlogViewModel:ViewModel() {
     private val blogRepository = BlogRepository()
-    private val _blogs = MutableStateFlow<List<Blog>>(emptyList())
-    val blogs: MutableStateFlow<List<Blog>>
+    private val _blogs = MutableStateFlow<List<BlogType>>(emptyList())
+    val blogs: MutableStateFlow<List<BlogType>>
         get() = _blogs
 
     init {
