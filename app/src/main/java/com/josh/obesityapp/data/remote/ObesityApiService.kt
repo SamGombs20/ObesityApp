@@ -5,7 +5,7 @@ import com.josh.obesityapp.data.model.PredictionResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface ApiService{
+interface ObesityApiService{
     @POST("/predict")
     suspend fun getPrediction(@Body apiInput: APIInput):PredictionResponse
 }

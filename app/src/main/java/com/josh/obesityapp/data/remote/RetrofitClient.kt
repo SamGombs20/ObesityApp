@@ -4,13 +4,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://obesityml.onrender.com"
+    private const val BASE_URL_OBESITY = "https://obesityml.onrender.com"
 
-    val apiService:ApiService by lazy {
+    val obesityApiService:ObesityApiService by lazy {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL_OBESITY)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(ApiService::class.java)
+            .create(ObesityApiService::class.java)
     }
 }
