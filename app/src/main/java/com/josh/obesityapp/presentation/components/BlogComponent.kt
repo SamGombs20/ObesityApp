@@ -5,12 +5,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -33,12 +36,13 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
         )
     ) {
         Row(Modifier.fillMaxWidth()) {
-            Image(
-                painter = rememberAsyncImagePainter(blog.mainImage?.asset?.url),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.weight(0.4f)
-            )
+//            Image(
+//                painter = rememberAsyncImagePainter(blog.mainImage?.asset?.url),
+//                contentDescription = null,
+//                contentScale = ContentScale.Crop,
+//                modifier = Modifier.weight(0.4f)
+//            )
+            blog.mainImage?.asset?.url?.let { BlogImage(it) }
             Spacer(Modifier.width(8 .dp))
             Column(Modifier.weight(0.6f)) {
                 Text(
@@ -60,4 +64,16 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
 
         }
     }
+}
+@Composable
+fun BlogImage(imageUrl: String) {
+    AsyncImage(
+        model = imageUrl,
+        contentDescription = "Blog Image",
+        modifier = Modifier
+            .width(150.dp)
+            .height(200.dp)
+            .clip(RoundedCornerShape(12.dp)),
+        contentScale = ContentScale.Crop
+    )
 }

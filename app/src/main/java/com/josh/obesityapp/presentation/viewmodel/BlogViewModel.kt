@@ -54,7 +54,7 @@ class BlogViewModel(application: Application):AndroidViewModel(application) {
                 val fetchedBlogs = blogRepository.fetchBlogPosts()
                 if (fetchedBlogs != null) {
                     _blogs.value = fetchedBlogs
-                    Log.d("BlogViewModel", "Fetched blogs: ${_blogs.value[0].author}")
+                    Log.d("BlogViewModel", "Fetched blogs: ${_blogs.value[0].mainImage}")
 
                 }
             } catch (e: Exception) {
