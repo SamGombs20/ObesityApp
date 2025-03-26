@@ -1,6 +1,7 @@
 package com.josh.obesityapp.data.repository
 
 
+import android.util.Log
 import com.josh.obesityapp.data.model.Blog
 import com.josh.obesityapp.data.remote.RetrofitClient
 
@@ -13,6 +14,7 @@ class BlogRepository {
             val blogPosts = response.body()
             blogPosts?.results
         } else {
+            Log.e("BlogRepository", "Error fetching blog posts: ${response.raw()}")
             null
         }
     }
