@@ -31,17 +31,15 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
             defaultElevation = 4 .dp
         )
     ) {
-        Row {
-            blog.mainImage?.asset?.url?.let {
-                AsyncImage(
-                    model = it,
-                    contentDescription = null,
-                    modifier = Modifier.weight(0.3f),
-                    contentScale = ContentScale.Crop
-                )
-            }
+        Row(Modifier.fillMaxWidth()) {
+            AsyncImage(
+                model = blog.mainImage?.asset?.url,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.weight(0.3f)
+            )
             Spacer(Modifier.width(8 .dp))
-            Column {
+            Column(Modifier.weight(0.6f)) {
                 Text(
                     text = blog.title,
                     fontWeight = FontWeight(600),
