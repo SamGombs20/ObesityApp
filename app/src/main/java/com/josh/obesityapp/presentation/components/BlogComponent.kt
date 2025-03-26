@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import coil3.compose.rememberAsyncImagePainter
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
@@ -32,11 +33,11 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
         )
     ) {
         Row(Modifier.fillMaxWidth()) {
-            AsyncImage(
-                model = blog.mainImage?.asset?.url,
+            Image(
+                painter = rememberAsyncImagePainter(blog.mainImage?.asset?.url),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.weight(0.3f)
+                modifier = Modifier.weight(0.4f)
             )
             Spacer(Modifier.width(8 .dp))
             Column(Modifier.weight(0.6f)) {
