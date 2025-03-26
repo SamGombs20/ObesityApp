@@ -11,7 +11,7 @@ class BlogRepository {
         val response = blogApiService.getBlogs()
         return if (response.isSuccessful) {
             val blogPosts = response.body()
-            blogPosts
+            blogPosts?.results
         } else {
             null
         }

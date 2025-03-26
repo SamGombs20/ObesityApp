@@ -25,3 +25,4 @@ data class Author(
     val name: String,
     val bio: String
 )
+data class SanityResponse(val results: List<Blog>)
