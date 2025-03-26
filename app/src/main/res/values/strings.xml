@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">ObesiScan</string>
+    <string name="half_start">Obesi</string>
+    <string name="half_end">Scan</string>
+    <string name="splash_text">Your easy obesity checker</string>
+    <string name="intro_text">Quickly check your obesity level. Let’s start your journey to better health today!</string>
+    <string name="intro_btn_txt">Check now!</string>
+    <string name="how_title">How it works</string>
+    <string name="how_text">Our model predicts a person\'s likelihood of being overweight or obese based on their lifestyle, habits, and physical characteristics.</string>
+    <string name="read_on">Read more…</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="height_label">Height (m)</string>
+    <string name="weight_label">Weight (kg)</string>
+    <string name="age_label">Age</string>
+    <string name="gender_label">Gender</string>
+    <string name="submit_btn">Submit</string>
+    <string name="next_btn">Next</string>
+    <string name="eating_habit">Eating Habits</string>
+    <string name="lifestyle">Daily Activity &amp; Lifestyle</string>
+    <string name="transport">Transportation &amp; Mobility</string>
+    <string name="caloric_query">Do you eat high caloric food frequently?(Red meat, nuts, milk, etc)</string>
+    <string name="main_meals">How many main meals do you have daily?</string>
+    <string name="family_history">Has a family member suffered or suffers from overweight?</string>
+    <string name="snack_meals">Do you eat any food/snack between meals?</string>
+    <string name="veg_intake">Do you usually eat vegetables in your meals?</string>
+    <string name="smoke">Do you smoke?</string>
+    <string name="alcohol">How often do you drink alcohol?</string>
+    <string name="water">How much water do you drink daily?</string>
+    <string name="monitor">Do you monitor the calories you eat daily?</string>
+    <string name="physical">How often do you have physical activity?</string>
+    <string name="technology">How much time do you use technological devices such as cell phone, video games, television, computer and others?</string>
+    <string name="transport_means">Which transportation do you usually use? </string>
+    <string name="result_title">Your status</string>
+    <string name="result_text">The model says you are: </string>
+    <string name="close">Close</string>
+    <string name="about">About ObesiScan</string>
+    <string name="about_info">This mobile app uses your data and a pre-trained machine learning model
+    to estimate one\'s likelihood of being overweight or obese. It also has a blog section with tips on staying
+        it and healthy.
+    </string>
+    <string name="network_message">Make sure you are connected to the internet!</string>
+
+</resources>
