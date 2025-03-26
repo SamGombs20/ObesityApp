@@ -35,6 +35,7 @@ import com.josh.obesityapp.navigation.NavigationItem
 import com.josh.obesityapp.navigation.NestedNavigationItem
 import com.josh.obesityapp.presentation.components.BottomNavbar
 import com.josh.obesityapp.presentation.components.CustomAlert
+import com.josh.obesityapp.presentation.viewmodel.BlogViewModel
 import com.josh.obesityapp.presentation.viewmodel.UserInputViewModel
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
@@ -44,6 +45,7 @@ import com.josh.obesityapp.ui.theme.customDarkGreen
 fun MainScreen(){
     val navController = rememberNavController()
     val userInputViewModel:UserInputViewModel = viewModel()
+    val blogViewModel:BlogViewModel = viewModel()
     var showAlert by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
@@ -118,7 +120,7 @@ fun MainScreen(){
 
                 }
                 composable(NavigationItem.Blog.route){
-                    BlogScreen()
+                    BlogScreen(blogViewModel)
                 }
             }
             if(showAlert){

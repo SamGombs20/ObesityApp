@@ -1,6 +1,7 @@
 package com.josh.obesityapp.data.remote
 
 import com.josh.obesityapp.data.model.Blog
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 
@@ -19,7 +20,7 @@ interface BlogApiService {
             "                publishedAt,\n" +
             "                author->{_id, name, bio}\n" +
             "            }")
-        suspend fun getBlogs(): List<Blog>
+        suspend fun getBlogs(): Response<List<Blog>>
 
 
 }
