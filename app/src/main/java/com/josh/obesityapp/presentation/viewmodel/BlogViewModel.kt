@@ -24,8 +24,9 @@ class BlogViewModel:ViewModel() {
                 val fetchedBlogs = blogRepository.fetchBlogPosts()
                 if (fetchedBlogs != null) {
                     _blogs.value = fetchedBlogs
+                    Log.d("BlogViewModel", "Fetched blogs: ${_blogs.value}")
+
                 }
-                Log.d("BlogViewModel", "Fetched blogs: ${_blogs.value}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
