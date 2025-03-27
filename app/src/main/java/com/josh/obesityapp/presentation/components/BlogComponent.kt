@@ -16,10 +16,12 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +30,8 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
@@ -51,27 +55,8 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
 //                modifier = Modifier.weight(0.4f)
 //            )
             blog.mainImage?.asset?.url?.let {
-                val painter = rememberAsyncImagePainter(it)
-                val state = painter.state.value
-                LaunchedEffect (state) {
-                    when (state) {
-                        is AsyncImagePainter.State.Loading -> Log.d("ImageLoader", "Image is loading...")
-                        is AsyncImagePainter.State.Success -> Log.d("ImageLoader", "Image loaded successfully!")
-                        is AsyncImagePainter.State.Error -> Log.e("ImageLoader", "Image failed to load", state.result.throwable)
-                        else -> {}
-                    }
-                }
-                Image(
-                    painter =painter,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.width(150 .dp).height(100 .dp)
-                )
-             }?: Box(
-                modifier = Modifier
-                    .weight(0.4f)
-                    .background(Color.Green) // Optional: placeholder background
-            )
+                SanityImage(imageUrl = it)
+            }
             Spacer(Modifier.width(8 .dp))
             Column {
                 Text(
@@ -95,24 +80,26 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
     }
 }
 @Composable
-fun BlogImage(imageUrl: String) {
+fun SanityImage(
+    imageUrl:String
+){
+    val context = LocalContext.current
+    val imageRequest = remember(imageUrl){
+        ImageRequest.Builder(context)
+            .data(imageUrl)
+            .crossfade(true)
+            .build()
+    }
     AsyncImage(
-        model = imageUrl,
-        contentDescription = "Blog Image",
-        modifier = Modifier
-            .width(150.dp)
-            .height(100.dp)
-            .clip(RoundedCornerShape(12.dp)),
+        model = imageRequest,
+        contentDescription = null,
         contentScale = ContentScale.Crop,
-        onError = { exception ->
-            Log.e("BlogItem", "Image load error: ${exception.result}")
+        modifier = Modifier
+            .width(150 .dp)
+            .height(120 .dp)
+            .clip(RoundedCornerShape(8 .dp)),
+        onError = {exception->
+            Log.e("SanityImage", "Error loading image", exception.result.throwable)
         }
     )
 }
-
-@Preview(showBackground = true)
-@Composable
-fun BlogImagePreview() {
-    BlogImage("https://cdn.sanity.io/images/40v865zp/production/430762e46dab4fbd3dcd351543248a38ab1acfa0-636x568.png")
-}
-
