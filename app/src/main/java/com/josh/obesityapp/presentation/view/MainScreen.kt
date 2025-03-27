@@ -53,7 +53,7 @@ fun MainScreen(){
         topBar = {
             TopAppBar(
                 title = {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.background(Color.White)) {
                         Icon(painter = painterResource(R.drawable.app_bar_icon),
                             contentDescription = stringResource(R.string.app_name),
                             tint = customDarkGreen,
@@ -92,8 +92,7 @@ fun MainScreen(){
         },
         bottomBar = {
             BottomNavbar(navController = navController)
-        },
-        modifier = Modifier.background(Color.White)
+        }
     ) { innerPadding ->
         Column(modifier = Modifier.fillMaxSize()) {
             NavHost(
