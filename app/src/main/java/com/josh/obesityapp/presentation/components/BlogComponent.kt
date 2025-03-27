@@ -44,7 +44,7 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
             defaultElevation = 4 .dp
         )
     ) {
-        Row(Modifier.fillMaxWidth()) {
+        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             blog.mainImage?.asset?.url?.let {
                 SanityImage(imageUrl = it)
             }

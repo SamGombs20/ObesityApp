@@ -1,6 +1,5 @@
 package com.josh.obesityapp.presentation.view
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -87,10 +86,9 @@ fun TransportScreen(navController: NavController, viewModel: UserInputViewModel)
         }
     }
 
-    Column(modifier = Modifier.padding(8 .dp).fillMaxSize(),
-        verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier.padding(8 .dp).fillMaxSize()) {
         Icon(
-            painter = painterResource(R.drawable.daily),
+            painter = painterResource(R.drawable.physical),
             contentDescription = stringResource(R.string.lifestyle),
             tint = customDarkGreen,
             modifier = Modifier

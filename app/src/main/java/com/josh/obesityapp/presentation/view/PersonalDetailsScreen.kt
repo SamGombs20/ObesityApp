@@ -1,6 +1,5 @@
 package com.josh.obesityapp.presentation.view
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -94,8 +93,7 @@ fun PersonalDetailsScreen(navController: NavController, viewModel: UserInputView
         return isValid
     }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16 .dp),
-        verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier.fillMaxSize().padding(16 .dp)) {
         Icon(
             painter = painterResource(R.drawable.personal),
             contentDescription = stringResource(R.string.personal_details),

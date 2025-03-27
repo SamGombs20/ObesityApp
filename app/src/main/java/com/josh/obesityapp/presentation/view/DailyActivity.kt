@@ -1,6 +1,5 @@
 package com.josh.obesityapp.presentation.view
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -83,8 +82,7 @@ fun DailyActivityScreen(navController: NavController,viewModel: UserInputViewMod
 
 
 
-    Column(modifier = Modifier.fillMaxSize().padding(8 .dp),
-        verticalArrangement = Arrangement.Center) {
+    Column(modifier = Modifier.fillMaxSize().padding(8 .dp)) {
 
         Icon(
             painter = painterResource(R.drawable.daily),
