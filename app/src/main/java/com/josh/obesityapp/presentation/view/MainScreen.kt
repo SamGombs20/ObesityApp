@@ -105,6 +105,9 @@ fun MainScreen(){
                     composable(NestedNavigationItem.Home.route){
                         HomeScreen(navController)
                     }
+                    composable(NestedNavigationItem.WorkingInfo.route) {
+                        HowItWorksScreen(navController)
+                    }
                     composable(NestedNavigationItem.PersonalInfo.route){
                         PersonalDetailsScreen(navController, userInputViewModel)
                     }

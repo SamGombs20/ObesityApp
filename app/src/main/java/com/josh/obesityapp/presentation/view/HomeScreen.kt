@@ -103,7 +103,13 @@ fun HomeScreen(navController: NavController){
                             text = stringResource(R.string.how_text)
                         )
                         TextButton(
-                            onClick = {},
+                            onClick = {
+                                navController.navigate(NestedNavigationItem.WorkingInfo.route){
+                                    popUpTo(NestedNavigationItem.WorkingInfo.route){
+                                        inclusive = true
+                                    }
+                                }
+                            },
                             colors = ButtonDefaults.textButtonColors(
                                 contentColor = customBrown
                             )
