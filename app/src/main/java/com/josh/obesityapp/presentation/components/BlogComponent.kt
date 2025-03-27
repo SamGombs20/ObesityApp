@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
@@ -42,7 +43,7 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
     val previewText = blog.body.firstOrNull()?.children?.firstOrNull()?.text?: ""
     ElevatedCard(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 16 .dp, vertical = 8 .dp),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 4 .dp
         )
@@ -81,20 +82,14 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
 }
 @Composable
 fun SanityImage(
-    imageUrl:String
+    imageUrl:String,
+    modifier: Modifier= Modifier
 ){
-    val context = LocalContext.current
-    val imageRequest = remember(imageUrl){
-        ImageRequest.Builder(context)
-            .data(imageUrl)
-            .crossfade(true)
-            .build()
-    }
     AsyncImage(
         model = imageUrl,
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = Modifier
+        modifier = modifier
             .width(150 .dp)
             .height(120 .dp)
             .clip(RoundedCornerShape(8 .dp)),
