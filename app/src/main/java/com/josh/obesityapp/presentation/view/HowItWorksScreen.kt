@@ -35,7 +35,7 @@ fun HowItWorksScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .padding(16.dp)
+            .padding(vertical = 4 .dp, horizontal = 16 .dp)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.Start
     ) {
