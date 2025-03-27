@@ -96,7 +96,8 @@ fun MainScreen(){
         },
         bottomBar = {
             BottomNavbar(navController = navController)
-        }
+        },
+        containerColor = Color.White
     ) { innerPadding ->
         Column(modifier = Modifier.fillMaxSize()) {
             NavHost(

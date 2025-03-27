@@ -23,7 +23,7 @@ import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customSeaGreen
 
 @Composable
-fun CustomTitle(strRes:Int, modifier: Modifier = Modifier){
+fun CustomTitle(strRes:Int, modifier: Modifier = Modifier, underline:Boolean = true){
     Column(modifier = modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = stringResource(strRes),
@@ -36,8 +36,10 @@ fun CustomTitle(strRes:Int, modifier: Modifier = Modifier){
             ),
             fontWeight = FontWeight(500)
         )
-        Spacer(Modifier.height(8 .dp))
-        CustomHorizontalDivider()
+        if (underline){
+            Spacer(Modifier.height(8 .dp))
+            CustomHorizontalDivider()
+        }
     }
 }
 @Composable
