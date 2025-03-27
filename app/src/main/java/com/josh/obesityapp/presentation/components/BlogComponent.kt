@@ -91,7 +91,7 @@ fun SanityImage(
             .build()
     }
     AsyncImage(
-        model = imageRequest,
+        model = imageUrl,
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier
