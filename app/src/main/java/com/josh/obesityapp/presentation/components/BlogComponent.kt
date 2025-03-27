@@ -1,5 +1,7 @@
 package com.josh.obesityapp.presentation.components
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -33,7 +36,9 @@ import coil3.request.crossfade
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
+import com.josh.obesityapp.utils.formatDate
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun BlogItem(blog: BlogType, onClick: () -> Unit){
     val previewText = blog.body.firstOrNull()?.children?.firstOrNull()?.text?: ""
@@ -49,13 +54,15 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
                 SanityImage(imageUrl = it)
             }
             Spacer(Modifier.width(8 .dp))
-            Column {
+            Column(Modifier.padding(
+                horizontal = 4 .dp, vertical = 2 .dp
+            )) {
                 Text(
                     text = blog.title,
                     fontWeight = FontWeight(500),
                     color = customBrown
                 )
-                Spacer(Modifier.height(16 .dp))
+                Spacer(Modifier.height(4 .dp))
                 if (previewText.isNotEmpty()){
                     Text(
                         text = previewText,
@@ -63,6 +70,16 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
                         overflow = TextOverflow.Ellipsis,
                         color = customDarkGreen,
                         fontSize = 12 .sp
+                    )
+                }
+                Box(
+                    contentAlignment = Alignment.BottomEnd
+                ){
+                    Text(
+                        text = formatDate(blog.publishedAt),
+                        color = customBrown,
+                        fontSize = 12 .sp,
+                        fontStyle = FontStyle.Italic
                     )
                 }
             }
