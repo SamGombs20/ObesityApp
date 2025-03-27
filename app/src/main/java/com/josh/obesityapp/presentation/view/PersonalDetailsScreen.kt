@@ -109,7 +109,7 @@ fun PersonalDetailsScreen(navController: NavController, viewModel: UserInputView
         LazyColumn {
             item {
                 CustomSurface {
-                    Box(modifier = Modifier.padding(16 .dp)){
+                    Box(modifier = Modifier.padding(4 .dp)){
                         Column {
                             Text(
                                 text = stringResource(R.string.gender_label),
