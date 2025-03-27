@@ -53,7 +53,7 @@ fun MainScreen(){
         topBar = {
             TopAppBar(
                 title = {
-                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.background(Color.White)) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(painter = painterResource(R.drawable.app_bar_icon),
                             contentDescription = stringResource(R.string.app_name),
                             tint = customDarkGreen,
@@ -87,7 +87,8 @@ fun MainScreen(){
                             modifier = Modifier.size(24 .dp)
                         )
                     }
-                }
+                },
+                modifier = Modifier.background(Color.White)
             )
         },
         bottomBar = {
