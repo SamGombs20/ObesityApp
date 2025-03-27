@@ -15,6 +15,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import coil3.compose.AsyncImagePainter
 import coil3.compose.rememberAsyncImagePainter
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
@@ -49,8 +51,18 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
 //                modifier = Modifier.weight(0.4f)
 //            )
             blog.mainImage?.asset?.url?.let {
+                val painter = rememberAsyncImagePainter(it)
+                val state = painter.state.value
+                LaunchedEffect (state) {
+                    when (state) {
+                        is AsyncImagePainter.State.Loading -> Log.d("ImageLoader", "Image is loading...")
+                        is AsyncImagePainter.State.Success -> Log.d("ImageLoader", "Image loaded successfully!")
+                        is AsyncImagePainter.State.Error -> Log.e("ImageLoader", "Image failed to load", state.result.throwable)
+                        else -> {}
+                    }
+                }
                 Image(
-                    painter = rememberAsyncImagePainter(it),
+                    painter =painter,
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.width(150 .dp).height(100 .dp)
