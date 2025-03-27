@@ -17,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
@@ -24,6 +25,7 @@ import coil3.compose.rememberAsyncImagePainter
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
+import com.josh.obesityapp.utils.transformSanityImageUrl
 
 @Composable
 fun BlogItem(blog: BlogType, onClick: () -> Unit){
@@ -42,9 +44,11 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
 //                contentScale = ContentScale.Crop,
 //                modifier = Modifier.weight(0.4f)
 //            )
-            blog.mainImage?.asset?.url?.let { BlogImage(it) }
+            blog.mainImage?.asset?.url?.let { BlogImage(
+                transformSanityImageUrl(it)
+            ) }
             Spacer(Modifier.width(8 .dp))
-            Column(Modifier.weight(0.6f)) {
+            Column {
                 Text(
                     text = blog.title,
                     fontWeight = FontWeight(600),
@@ -72,8 +76,13 @@ fun BlogImage(imageUrl: String) {
         contentDescription = "Blog Image",
         modifier = Modifier
             .width(150.dp)
-            .height(200.dp)
+            .height(100.dp)
             .clip(RoundedCornerShape(12.dp)),
         contentScale = ContentScale.Crop
     )
+}
+@Preview(showBackground = true)
+@Composable
+fun BlogImagePreview() {
+    BlogImage("https://cdn.sanity.io/images/40v865zp/production/430762e46dab4fbd3dcd351543248a38ab1acfa0-636x568.png")
 }
