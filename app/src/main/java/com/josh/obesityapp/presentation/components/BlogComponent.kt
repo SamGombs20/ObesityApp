@@ -37,6 +37,7 @@ import coil3.request.crossfade
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
+import com.josh.obesityapp.ui.theme.customLightBrown
 import com.josh.obesityapp.utils.formatDate
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -48,6 +49,9 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
         modifier = Modifier.fillMaxWidth().padding(horizontal = 8 .dp, vertical = 4 .dp).height(120 .dp),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 4 .dp
+        ),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = customLightBrown
         )
     ) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
