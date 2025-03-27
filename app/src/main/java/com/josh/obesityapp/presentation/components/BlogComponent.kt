@@ -77,7 +77,9 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
                     )
                 }
                 Box(
-                    modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight().padding(
+                        horizontal = 4 .dp, vertical = 2 .dp
+                    ),
                     contentAlignment = Alignment.BottomEnd
                 ){
                     Text(
@@ -100,7 +102,6 @@ fun SanityImage(imageUrl: String) {
         modifier = Modifier
             .width(150.dp)
             .height(120.dp)
-            .clip(RoundedCornerShape(8.dp))
     ) {
         if (isLoading) {
             CircularProgressIndicator(
