@@ -28,7 +28,7 @@ fun CustomTitle(strRes:Int, modifier: Modifier = Modifier, underline:Boolean = t
         Text(
             text = stringResource(strRes),
             fontSize = 22 .sp,
-            textAlign = TextAlign.Center,
+            textAlign = if (underline) TextAlign.Center else TextAlign.Start,
             style = TextStyle(
                 brush = Brush.linearGradient(
                     colors = listOf(customSeaGreen, customBrown)
