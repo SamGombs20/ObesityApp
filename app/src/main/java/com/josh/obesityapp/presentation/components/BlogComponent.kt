@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,9 +26,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.compose.rememberAsyncImagePainter
-import coil3.request.ImageRequest
-import coil3.request.transformations
-import coil3.transform.RoundedCornersTransformation
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
@@ -53,9 +49,11 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
 //                modifier = Modifier.weight(0.4f)
 //            )
             blog.mainImage?.asset?.url?.let {
-                SanityImage(
-                    imageUrl = it,
-                    modifier = Modifier.weight(0.4f)
+                Image(
+                    painter = rememberAsyncImagePainter(it),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.width(150 .dp).height(100 .dp)
                 )
              }?: Box(
                 modifier = Modifier
@@ -99,31 +97,7 @@ fun BlogImage(imageUrl: String) {
         }
     )
 }
-@Composable
-fun SanityImage(
-    imageUrl: String,
-    modifier: Modifier = Modifier,
-    contentDescription: String? = null
-){
-    val transformedUrl = transformSanityImageUrl(imageUrl)
-    AsyncImage(
-        model = ImageRequest.Builder(LocalContext.current)
-            .data(transformedUrl)
-            .transformations(
-                RoundedCornersTransformation(8f), // Optional: adds rounded corners
-                // You can add more transformations if needed
-            )
-            .build(),
-        contentDescription = contentDescription,
-        modifier = modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(Color.LightGray), // Placeholder background
-        contentScale = ContentScale.Crop,
-        onError = { exception ->
-            Log.e("SanityImage", "Image load error: ${exception.result}")
-        }
-    )
-}
+
 @Preview(showBackground = true)
 @Composable
 fun BlogImagePreview() {
