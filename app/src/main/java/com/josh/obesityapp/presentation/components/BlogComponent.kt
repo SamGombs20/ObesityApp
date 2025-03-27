@@ -77,7 +77,7 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
                     )
                 }
                 Box(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight(),
                     contentAlignment = Alignment.BottomEnd
                 ){
                     Text(
