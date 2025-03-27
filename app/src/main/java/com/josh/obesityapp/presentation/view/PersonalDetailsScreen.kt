@@ -93,7 +93,7 @@ fun PersonalDetailsScreen(navController: NavController, viewModel: UserInputView
         return isValid
     }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16 .dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(4 .dp)) {
         Icon(
             painter = painterResource(R.drawable.personal),
             contentDescription = stringResource(R.string.personal_details),
@@ -109,7 +109,7 @@ fun PersonalDetailsScreen(navController: NavController, viewModel: UserInputView
         LazyColumn {
             item {
                 CustomSurface {
-                    Box(modifier = Modifier.padding(4 .dp)){
+                    Box(modifier = Modifier.padding(12 .dp)){
                         Column {
                             Text(
                                 text = stringResource(R.string.gender_label),
