@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -44,7 +45,7 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
     val previewText = blog.body.firstOrNull()?.children?.firstOrNull()?.text?: ""
     ElevatedCard(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 8 .dp, vertical = 4 .dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 8 .dp, vertical = 4 .dp).height(120 .dp),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 4 .dp
         )
@@ -56,7 +57,7 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
             Spacer(Modifier.width(8 .dp))
             Column(Modifier.padding(
                 horizontal = 4 .dp, vertical = 2 .dp
-            )) {
+            ).fillMaxWidth(0.7f).fillMaxHeight()) {
                 Text(
                     text = blog.title,
                     fontWeight = FontWeight(500),
@@ -73,6 +74,7 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
                     )
                 }
                 Box(
+                    modifier = Modifier.fillMaxWidth(),
                     contentAlignment = Alignment.BottomEnd
                 ){
                     Text(
