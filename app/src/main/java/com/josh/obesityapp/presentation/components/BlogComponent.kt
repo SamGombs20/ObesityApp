@@ -13,11 +13,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -81,20 +86,40 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
     }
 }
 @Composable
-fun SanityImage(
-    imageUrl:String,
-    modifier: Modifier= Modifier
-){
-    AsyncImage(
-        model = imageUrl,
-        contentDescription = null,
-        contentScale = ContentScale.Crop,
-        modifier = modifier
-            .width(150 .dp)
-            .height(120 .dp)
-            .clip(RoundedCornerShape(8 .dp)),
-        onError = {exception->
-            Log.e("SanityImage", "Error loading image", exception.result.throwable)
+fun SanityImage(imageUrl: String) {
+    var isLoading by remember { mutableStateOf(true) }
+
+    Box(
+        modifier = Modifier
+            .width(150.dp)
+            .height(120.dp)
+            .clip(RoundedCornerShape(8.dp))
+    ) {
+        // Show Lottie animation or shimmer effect when loading
+        if (isLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier.align(Alignment.Center)
+            )
         }
-    )
+
+        // Load Image
+        AsyncImage(
+            model = ImageRequest.Builder(LocalContext.current)
+                .data(imageUrl)
+                .crossfade(true)
+                .listener(
+                    onStart = { isLoading = true },
+                    onSuccess = { _, _ -> isLoading = false },
+                    onError = { _, _ -> isLoading = false }
+                )
+                .build(),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            modifier = Modifier.matchParentSize(),
+            onError = { exception ->
+                Log.e("SanityImage", "Error loading image", exception.result.throwable)
+            }
+        )
+    }
 }
+
