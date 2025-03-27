@@ -1,8 +1,5 @@
 package com.josh.obesityapp.presentation.components
 
-import android.util.Log
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,7 +14,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,41 +21,30 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
-import coil3.compose.AsyncImagePainter
-import coil3.compose.rememberAsyncImagePainter
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.josh.obesityapp.data.model.BlogType
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
-import com.josh.obesityapp.utils.transformSanityImageUrl
 
 @Composable
 fun BlogItem(blog: BlogType, onClick: () -> Unit){
     val previewText = blog.body.firstOrNull()?.children?.firstOrNull()?.text?: ""
     ElevatedCard(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth().padding(horizontal = 16 .dp, vertical = 8 .dp),
+        modifier = Modifier.fillMaxWidth().padding(horizontal = 8 .dp, vertical = 4 .dp),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 4 .dp
         )
     ) {
         Row(Modifier.fillMaxWidth()) {
-//            Image(
-//                painter = rememberAsyncImagePainter(blog.mainImage?.asset?.url),
-//                contentDescription = null,
-//                contentScale = ContentScale.Crop,
-//                modifier = Modifier.weight(0.4f)
-//            )
             blog.mainImage?.asset?.url?.let {
                 SanityImage(imageUrl = it)
             }
@@ -67,16 +52,16 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
             Column {
                 Text(
                     text = blog.title,
-                    fontWeight = FontWeight(600),
+                    fontWeight = FontWeight(500),
                     color = customBrown
                 )
+                Spacer(Modifier.height(16 .dp))
                 if (previewText.isNotEmpty()){
                     Text(
                         text = previewText,
                         maxLines = 2,
                         overflow = TextOverflow.Ellipsis,
                         color = customDarkGreen,
-                        fontWeight = FontWeight(400),
                         fontSize = 12 .sp
                     )
                 }
@@ -95,10 +80,10 @@ fun SanityImage(imageUrl: String) {
             .height(120.dp)
             .clip(RoundedCornerShape(8.dp))
     ) {
-        // Show Lottie animation or shimmer effect when loading
         if (isLoading) {
             CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
+                modifier = Modifier.align(Alignment.Center),
+                color = customDarkGreen
             )
         }
 
@@ -115,10 +100,7 @@ fun SanityImage(imageUrl: String) {
                 .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.matchParentSize(),
-            onError = { exception ->
-                Log.e("SanityImage", "Error loading image", exception.result.throwable)
-            }
+            modifier = Modifier.matchParentSize()
         )
     }
 }
