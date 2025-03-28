@@ -104,7 +104,7 @@ fun MainScreen(){
                         .padding(bottom = 1 .dp)
                 )
                 HorizontalDivider(
-                    modifier = Modifier.align(Alignment.BottomCenter),
+                    modifier = Modifier.align(Alignment.BottomCenter).padding(horizontal = 4 .dp),
                     thickness = 1 .dp,
                     color = customBrown)
             }
