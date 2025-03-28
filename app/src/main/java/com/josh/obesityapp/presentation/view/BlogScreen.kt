@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.josh.obesityapp.presentation.components.BlogItem
+import com.josh.obesityapp.presentation.components.NoInternet
 import com.josh.obesityapp.presentation.viewmodel.BlogViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -34,11 +35,6 @@ fun BlogScreen(blogViewModel: BlogViewModel){
         }
     }
     else{
-        Box(
-            modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = "No Internet Connection")
-        }
+        NoInternet()
     }
 }
