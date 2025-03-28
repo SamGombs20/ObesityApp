@@ -1,8 +1,15 @@
 package com.josh.obesityapp.presentation.components
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +18,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
@@ -24,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.josh.obesityapp.R
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
+import kotlin.random.Random
 
 @Composable
 fun NoInternet() {
@@ -35,12 +46,35 @@ fun NoInternet() {
         val gradientBrush = Brush.linearGradient(
             colors = listOf(customDarkGreen, customBrown)
         )
+        val scale = remember { Animatable(0.5f) }
+        val alpha = remember { Animatable(0f) }
+        val infiniteTransition = rememberInfiniteTransition()
+        val shakeOffset by infiniteTransition.animateFloat(
+            initialValue = 0f,
+            targetValue = 10f,
+            animationSpec = infiniteRepeatable(
+                animation = tween(100, easing = LinearEasing),
+                repeatMode = RepeatMode.Reverse
+            )
+        )
+        LaunchedEffect(Unit) {
+            scale.animateTo(
+                targetValue = 1f,
+                animationSpec = tween(durationMillis = 800, easing = FastOutSlowInEasing)
+            )
+            alpha.animateTo(0.99f, animationSpec = tween(500))
+        }
         Image(
             painter = painterResource(R.drawable.no_wifi),
             contentDescription = stringResource(R.string.no_internet),
             modifier = Modifier
                 .size(200.dp)
-                .graphicsLayer(alpha = 0.99f)
+                .graphicsLayer(
+                    scaleX = scale.value,
+                    scaleY = scale.value,
+                    alpha = alpha.value,
+                    translationX = if (Random.nextInt(0,100)<10) shakeOffset else 0f
+                )
                 .drawWithCache {
                     onDrawWithContent {
                         drawContent()
