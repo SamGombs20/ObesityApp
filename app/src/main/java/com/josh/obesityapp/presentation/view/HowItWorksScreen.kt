@@ -118,7 +118,7 @@ fun SectionTitle(title: String) {
     Text(
         text = title,
         fontSize = 16 .sp,
-        fontWeight = FontWeight(500),
+        fontWeight = FontWeight(600),
         modifier = Modifier.padding(top = 12.dp, bottom = 6.dp)
     )
 }
