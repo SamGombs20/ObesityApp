@@ -29,7 +29,7 @@ fun NoInternet(){
         Spacer(Modifier.height(16 .dp))
         Text(
             text = stringResource(R.string.no_internet),
-            modifier = Modifier.align(Alignment.Center)
+            modifier = Modifier.align(Alignment.BottomCenter)
         )
     }
 }
