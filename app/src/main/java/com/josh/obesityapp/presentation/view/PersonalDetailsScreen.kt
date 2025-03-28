@@ -30,7 +30,7 @@ import com.josh.obesityapp.presentation.components.CustomQueryTitle
 import com.josh.obesityapp.presentation.components.CustomRadioButtonGroup
 import com.josh.obesityapp.presentation.components.CustomSurface
 import com.josh.obesityapp.presentation.components.CustomTextField
-import com.josh.obesityapp.presentation.components.CustomTitle
+import com.josh.obesityapp.presentation.components.CustomUnderlineTitle
 import com.josh.obesityapp.presentation.components.ErrorText
 import com.josh.obesityapp.presentation.components.FillWidthHorizontalDivider
 import com.josh.obesityapp.presentation.components.NavButton
@@ -102,7 +102,7 @@ fun PersonalDetailsScreen(navController: NavController, viewModel: UserInputView
                 100 .dp
             ).align(Alignment.CenterHorizontally)
         )
-        CustomTitle(
+        CustomUnderlineTitle(
             strRes = R.string.personal_details
         )
         Spacer(Modifier.height(16 .dp))

@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.josh.obesityapp.R
 import com.josh.obesityapp.navigation.NestedNavigationItem
-import com.josh.obesityapp.presentation.components.CustomTitle
+import com.josh.obesityapp.presentation.components.CustomUnderlineTitle
 import com.josh.obesityapp.ui.theme.customBrown
 
 
@@ -40,7 +40,7 @@ fun HowItWorksScreen(navController: NavController) {
         horizontalAlignment = Alignment.Start
     ) {
         // Title
-        CustomTitle(
+        CustomUnderlineTitle(
             strRes = R.string.how_title,
             modifier = Modifier.padding(bottom = 8 .dp)
         )

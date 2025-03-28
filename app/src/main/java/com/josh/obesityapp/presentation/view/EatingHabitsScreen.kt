@@ -24,7 +24,7 @@ import com.josh.obesityapp.navigation.NestedNavigationItem
 import com.josh.obesityapp.presentation.components.CustomQueryTitle
 import com.josh.obesityapp.presentation.components.CustomRadioButtonGroup
 import com.josh.obesityapp.presentation.components.CustomSurface
-import com.josh.obesityapp.presentation.components.CustomTitle
+import com.josh.obesityapp.presentation.components.CustomUnderlineTitle
 import com.josh.obesityapp.presentation.components.ErrorText
 import com.josh.obesityapp.presentation.components.FillWidthHorizontalDivider
 import com.josh.obesityapp.presentation.components.NavButton
@@ -89,7 +89,7 @@ fun EatingHabitsScreen(navController: NavController, viewModel: UserInputViewMod
             tint = customDarkGreen
 
         )
-        CustomTitle(
+        CustomUnderlineTitle(
             strRes = R.string.eating_habit
         )
         LazyColumn {

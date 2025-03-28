@@ -23,7 +23,7 @@ import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customSeaGreen
 
 @Composable
-fun CustomTitle(strRes:Int, modifier: Modifier = Modifier, underline:Boolean = true){
+fun CustomUnderlineTitle(strRes:Int, modifier: Modifier = Modifier, underline:Boolean = true){
     Column(modifier = modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(
             text = stringResource(strRes),
@@ -42,6 +42,21 @@ fun CustomTitle(strRes:Int, modifier: Modifier = Modifier, underline:Boolean = t
         }
     }
 }
+@Composable
+fun CustomTitle(strRes: Int){
+    Text(
+        text = stringResource(strRes),
+        fontSize = 22 .sp,
+        textAlign =  TextAlign.Center,
+        style = TextStyle(
+            brush = Brush.linearGradient(
+                colors = listOf(customSeaGreen, customBrown)
+            )
+        ),
+        fontWeight = FontWeight(500)
+    )
+}
+
 @Composable
 fun CustomQueryTitle(strRes: Int){
     Text(
@@ -62,7 +77,7 @@ fun ErrorText(text:String){
 @Preview(showBackground = true)
 @Composable
 fun CustomTitlePreview(){
-    CustomTitle(
+    CustomUnderlineTitle(
         strRes = R.string.personal_details
     )
 }

@@ -24,7 +24,7 @@ import com.josh.obesityapp.navigation.NestedNavigationItem
 import com.josh.obesityapp.presentation.components.CustomQueryTitle
 import com.josh.obesityapp.presentation.components.CustomRadioButtonGroup
 import com.josh.obesityapp.presentation.components.CustomSurface
-import com.josh.obesityapp.presentation.components.CustomTitle
+import com.josh.obesityapp.presentation.components.CustomUnderlineTitle
 import com.josh.obesityapp.presentation.components.ErrorText
 import com.josh.obesityapp.presentation.components.FillWidthHorizontalDivider
 import com.josh.obesityapp.presentation.components.NavButton
@@ -93,7 +93,7 @@ fun DailyActivityScreen(navController: NavController,viewModel: UserInputViewMod
                 .align(Alignment.CenterHorizontally)
                 .padding(bottom = 16 .dp)
         )
-        CustomTitle(strRes = R.string.lifestyle)
+        CustomUnderlineTitle(strRes = R.string.lifestyle)
         LazyColumn {
             item {
                 CustomSurface {

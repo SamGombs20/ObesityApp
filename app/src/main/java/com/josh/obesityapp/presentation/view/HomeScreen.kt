@@ -29,6 +29,7 @@ import androidx.navigation.NavController
 import com.josh.obesityapp.R
 import com.josh.obesityapp.navigation.NestedNavigationItem
 import com.josh.obesityapp.presentation.components.CustomTitle
+import com.josh.obesityapp.presentation.components.CustomUnderlineTitle
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customLightGreen
 
@@ -73,10 +74,7 @@ fun HomeScreen(navController: NavController){
             Spacer(Modifier.height(16 .dp))
         }
         item {
-            CustomTitle(
-                strRes = R.string.how_title,
-                underline = false
-            )
+            CustomTitle(R.string.how_title)
             Spacer(Modifier.height(12 .dp))
         }
         item {
