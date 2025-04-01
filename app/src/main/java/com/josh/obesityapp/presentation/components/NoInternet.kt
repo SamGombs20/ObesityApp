@@ -20,7 +20,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
@@ -34,36 +36,49 @@ import androidx.compose.ui.unit.dp
 import com.josh.obesityapp.R
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
-import kotlin.random.Random
+import kotlinx.coroutines.delay
 
 @Composable
 fun NoInternet() {
+    val gradientBrush = Brush.linearGradient(
+        colors = listOf(customDarkGreen, customBrown)
+    )
+
+    val scale = remember { Animatable(0.5f) }
+    val alpha = remember { Animatable(0f) }
+    var startShaking by remember { mutableStateOf(false) }
+
+    val infiniteTransition = rememberInfiniteTransition()
+    val shakeOffset by infiniteTransition.animateFloat(
+        initialValue = 0f,
+        targetValue = 10f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(100, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
+
+    LaunchedEffect(Unit) {
+        // Initial animations (scale & fade-in)
+        scale.animateTo(
+            targetValue = 1f,
+            animationSpec = tween(durationMillis = 800, easing = FastOutSlowInEasing)
+        )
+        alpha.animateTo(0.99f, animationSpec = tween(500))
+
+        while (true) {
+            delay(3000) // Wait 5 seconds before shaking
+            startShaking = true
+            delay(2000) // Shake duration
+            startShaking = false
+        }
+    }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val gradientBrush = Brush.linearGradient(
-            colors = listOf(customDarkGreen, customBrown)
-        )
-        val scale = remember { Animatable(0.5f) }
-        val alpha = remember { Animatable(0f) }
-        val infiniteTransition = rememberInfiniteTransition()
-        val shakeOffset by infiniteTransition.animateFloat(
-            initialValue = 0f,
-            targetValue = 10f,
-            animationSpec = infiniteRepeatable(
-                animation = tween(100, easing = LinearEasing),
-                repeatMode = RepeatMode.Reverse
-            )
-        )
-        LaunchedEffect(Unit) {
-            scale.animateTo(
-                targetValue = 1f,
-                animationSpec = tween(durationMillis = 800, easing = FastOutSlowInEasing)
-            )
-            alpha.animateTo(0.99f, animationSpec = tween(500))
-        }
         Image(
             painter = painterResource(R.drawable.no_wifi),
             contentDescription = stringResource(R.string.no_internet),
@@ -73,16 +88,15 @@ fun NoInternet() {
                     scaleX = scale.value,
                     scaleY = scale.value,
                     alpha = alpha.value,
-                    translationX = if (Random.nextInt(0,100)<10) shakeOffset else 0f
+                    translationX = if (startShaking) shakeOffset else 0f
                 )
                 .drawWithCache {
                     onDrawWithContent {
                         drawContent()
                         drawRect(gradientBrush, blendMode = BlendMode.SrcAtop)
                     }
-                },
-
-            )
+                }
+        )
         Spacer(Modifier.height(16.dp))
         Text(
             text = stringResource(R.string.no_internet),
@@ -90,6 +104,8 @@ fun NoInternet() {
         )
     }
 }
+
+
 @Preview(showBackground = true)
 @Composable
 fun NoInternetPreview(){
