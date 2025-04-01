@@ -49,7 +49,7 @@ class BlogViewModel(application: Application):AndroidViewModel(application) {
         connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
     }
 
-    private fun loadBlogPosts() {
+    fun loadBlogPosts() {
         viewModelScope.launch {
             try {
                 val fetchedBlogs = blogRepository.fetchBlogPosts()

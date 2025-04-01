@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -22,6 +23,9 @@ fun BlogScreen(navController: NavController,blogViewModel: BlogViewModel){
     val blogs by blogViewModel.blogs.collectAsState()
     val isConnected by blogViewModel.isConnected.collectAsState()
     if (isConnected && blogs.isNotEmpty()){
+        LaunchedEffect(Unit) {
+            blogViewModel.loadBlogPosts()
+        }
         Column(
             Modifier.fillMaxSize().background(color = Color.White)
         ) {
