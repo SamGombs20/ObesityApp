@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
@@ -49,6 +50,9 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
         modifier = Modifier.fillMaxWidth().padding(horizontal = 8 .dp, vertical = 4 .dp).height(120 .dp),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 4 .dp
+        ),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = Color.White
         )
     ) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
