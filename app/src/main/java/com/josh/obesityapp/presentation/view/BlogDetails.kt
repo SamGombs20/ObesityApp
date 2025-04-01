@@ -87,6 +87,11 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
                     )
                 }
             }
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 8 .dp),
+                thickness = 1 .dp,
+                color = customDarkGreen
+            )
             Spacer(modifier = Modifier.height(16 .dp))
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
