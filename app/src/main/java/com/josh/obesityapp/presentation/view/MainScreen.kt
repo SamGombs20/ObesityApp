@@ -114,7 +114,20 @@ fun MainScreen(){
             }
             else{
                TopAppBar(
-                   title = {},
+                   title = {
+                       Row (verticalAlignment = Alignment.Bottom){
+                           Text(
+                               text = stringResource(R.string.half_start),
+                               color = customBrown,
+                               fontSize = 14 .sp
+                           )
+                           Text(
+                               text = stringResource(R.string.half_end),
+                               color = customDarkGreen,
+                           )
+                       }
+
+                   },
                    navigationIcon = {
                        IconButton(
                            onClick = {
