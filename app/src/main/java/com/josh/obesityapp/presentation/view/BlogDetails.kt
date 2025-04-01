@@ -39,6 +39,7 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(scrollState)
                 .padding(16 .dp),
         ) {
             Text(
