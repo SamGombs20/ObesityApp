@@ -49,9 +49,6 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
         modifier = Modifier.fillMaxWidth().padding(horizontal = 8 .dp, vertical = 4 .dp).height(120 .dp),
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 4 .dp
-        ),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = customLightBrown
         )
     ) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {

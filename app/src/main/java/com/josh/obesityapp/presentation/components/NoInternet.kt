@@ -83,7 +83,7 @@ fun NoInternet() {
             painter = painterResource(R.drawable.no_wifi),
             contentDescription = stringResource(R.string.no_internet),
             modifier = Modifier
-                .size(200.dp)
+                .size(150.dp)
                 .graphicsLayer(
                     scaleX = scale.value,
                     scaleY = scale.value,
