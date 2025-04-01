@@ -34,6 +34,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.josh.obesityapp.R
@@ -51,59 +52,63 @@ import com.josh.obesityapp.ui.theme.customDarkGreen
 @Composable
 fun MainScreen(){
     val navController = rememberNavController()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
     val userInputViewModel:UserInputViewModel = viewModel()
     val blogViewModel:BlogViewModel = viewModel()
     var showAlert by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
-            Box{
-                TopAppBar(
-                    title = {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(painter = painterResource(R.drawable.app_bar_icon),
-                                contentDescription = stringResource(R.string.app_name),
-                                tint = customDarkGreen,
-                                modifier = Modifier.size(40 .dp)
-                                    .padding(end = 16 .dp)
-                            )
-                            Row (verticalAlignment = Alignment.Bottom){
-                                Text(
-                                    text = stringResource(R.string.half_start),
-                                    color = customBrown,
-                                    fontSize = 14 .sp
+            if (currentRoute!=NestedNavigationItem.BlogDetails.route){
+                Box{
+                    TopAppBar(
+                        title = {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(painter = painterResource(R.drawable.app_bar_icon),
+                                    contentDescription = stringResource(R.string.app_name),
+                                    tint = customDarkGreen,
+                                    modifier = Modifier.size(40 .dp)
+                                        .padding(end = 16 .dp)
                                 )
-                                Text(
-                                    text = stringResource(R.string.half_end),
-                                    color = customDarkGreen,
-                                )
-                            }
+                                Row (verticalAlignment = Alignment.Bottom){
+                                    Text(
+                                        text = stringResource(R.string.half_start),
+                                        color = customBrown,
+                                        fontSize = 14 .sp
+                                    )
+                                    Text(
+                                        text = stringResource(R.string.half_end),
+                                        color = customDarkGreen,
+                                    )
+                                }
 
-                        }
-                    },
-                    actions = {
-                        IconButton(
-                            onClick = {
-                                showAlert = true
                             }
-                        ) {
-                            Icon(
-                                painter = painterResource(R.drawable.about),
-                                contentDescription = stringResource(R.string.about),
-                                tint = customDarkGreen,
-                                modifier = Modifier.size(24 .dp)
-                            )
-                        }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.White
-                    ),
-                    modifier = Modifier
-                        .padding(bottom = 1 .dp)
-                )
-                HorizontalDivider(
-                    modifier = Modifier.align(Alignment.BottomCenter).padding(horizontal = 4 .dp),
-                    thickness = 1 .dp,
-                    color = customBrown)
+                        },
+                        actions = {
+                            IconButton(
+                                onClick = {
+                                    showAlert = true
+                                }
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.about),
+                                    contentDescription = stringResource(R.string.about),
+                                    tint = customDarkGreen,
+                                    modifier = Modifier.size(24 .dp)
+                                )
+                            }
+                        },
+                        colors = TopAppBarDefaults.topAppBarColors(
+                            containerColor = Color.White
+                        ),
+                        modifier = Modifier
+                            .padding(bottom = 1 .dp)
+                    )
+                    HorizontalDivider(
+                        modifier = Modifier.align(Alignment.BottomCenter).padding(horizontal = 4 .dp),
+                        thickness = 1 .dp,
+                        color = customBrown)
+                }
             }
         },
         bottomBar = {
