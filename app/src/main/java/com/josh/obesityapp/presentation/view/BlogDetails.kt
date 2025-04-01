@@ -1,6 +1,10 @@
 package com.josh.obesityapp.presentation.view
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,7 +35,9 @@ import com.josh.obesityapp.data.model.BodyBlock
 import com.josh.obesityapp.presentation.viewmodel.BlogViewModel
 import com.josh.obesityapp.ui.theme.customBrown
 import com.josh.obesityapp.ui.theme.customDarkGreen
+import com.josh.obesityapp.utils.formatDate
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun BlogDetailsScreen(blogViewModel: BlogViewModel){
     val selectedBlog by blogViewModel.selectedBlog.collectAsState()
@@ -51,6 +57,36 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
                 fontWeight = FontWeight(600),
                 color = customBrown
             )
+            Spacer(Modifier.height(16 .dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Row {
+                    Text(
+                        text = "Published on: ",
+                        fontSize = 14 .sp,
+                        color = customDarkGreen
+                    )
+                    Text(
+                        text = formatDate(selectedBlog!!.publishedAt),
+                        fontSize = 14 .sp,
+                        color = customBrown
+                    )
+                }
+                Row {
+                    Text(
+                        text = "Author: ",
+                        fontSize = 14 .sp,
+                        color = customDarkGreen
+                    )
+                    Text(
+                        text = selectedBlog!!.author.name,
+                        fontSize = 14 .sp,
+                        color = customBrown
+                    )
+                }
+            }
             Spacer(modifier = Modifier.height(16 .dp))
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
