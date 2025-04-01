@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -28,6 +29,8 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.josh.obesityapp.data.model.BodyBlock
 import com.josh.obesityapp.presentation.viewmodel.BlogViewModel
+import com.josh.obesityapp.ui.theme.customBrown
+import com.josh.obesityapp.ui.theme.customDarkGreen
 
 @Composable
 fun BlogDetailsScreen(blogViewModel: BlogViewModel){
@@ -45,7 +48,8 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
             Text(
                 text = selectedBlog!!.title,
                 fontSize = 22 .sp,
-                fontWeight = FontWeight(600)
+                fontWeight = FontWeight(600),
+                color = customBrown
             )
             Spacer(modifier = Modifier.height(16 .dp))
             AsyncImage(
@@ -79,5 +83,10 @@ fun BlogBody(body: List<BodyBlock>){
                 Spacer(modifier = Modifier.height(8 .dp))
             }
         }
+        HorizontalDivider(
+            modifier = Modifier.padding(vertical = 8 .dp),
+            thickness = 1 .dp,
+            color = customDarkGreen
+        )
     }
 }
