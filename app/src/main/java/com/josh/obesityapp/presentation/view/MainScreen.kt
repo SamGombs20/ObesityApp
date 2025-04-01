@@ -110,6 +110,9 @@ fun MainScreen(){
                         color = customBrown)
                 }
             }
+            else{
+
+            }
         },
         bottomBar = {
             BottomNavbar(navController = navController)
