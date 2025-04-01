@@ -13,4 +13,8 @@ sealed class NestedNavigationItem(var route: String){
     data object TransportInfo:NestedNavigationItem("home_transport_info")
     data object Home:NestedNavigationItem("home_home_main")
     data object WorkingInfo:NestedNavigationItem("home_working_info")
+    data object Blog:NestedNavigationItem("blog_main")
+    data object BlogDetails:NestedNavigationItem("blog_details")
+
 }
+
