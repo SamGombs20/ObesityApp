@@ -125,6 +125,11 @@ fun MainScreen(){
                                text = stringResource(R.string.half_end),
                                color = customDarkGreen,
                            )
+                           Text(
+                               text = stringResource(R.string.blog),
+                               color = customDarkGreen,
+                               modifier = Modifier.padding(start = 8 .dp)
+                           )
                        }
 
                    },
