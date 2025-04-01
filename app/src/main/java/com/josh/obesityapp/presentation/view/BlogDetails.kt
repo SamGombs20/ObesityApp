@@ -63,6 +63,8 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
                     shape = RoundedCornerShape(8 .dp)
                 )
             )
+            Spacer(modifier = Modifier.height(16 .dp))
+            BlogBody(selectedBlog!!.body)
 
         }
     }
