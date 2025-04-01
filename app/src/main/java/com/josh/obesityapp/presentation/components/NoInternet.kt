@@ -67,9 +67,9 @@ fun NoInternet() {
         alpha.animateTo(0.99f, animationSpec = tween(500))
 
         while (true) {
-            delay(3000) // Wait 5 seconds before shaking
+            delay(4000) // Wait 4 seconds before shaking
             startShaking = true
-            delay(2000) // Shake duration
+            delay(1000) // Shake duration
             startShaking = false
         }
     }
