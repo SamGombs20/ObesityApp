@@ -102,7 +102,7 @@ fun NoInternet() {
             text = stringResource(R.string.no_internet),
             color = MaterialTheme.colorScheme.error
         )
-        Spacer(Modifier.height(32.dp))
+        Spacer(Modifier.height(8.dp))
         Text(
             text = stringResource(R.string.network_message),
             color = MaterialTheme.colorScheme.error
