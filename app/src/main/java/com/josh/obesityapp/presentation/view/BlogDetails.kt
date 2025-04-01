@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.josh.obesityapp.data.model.BodyBlock
 import com.josh.obesityapp.presentation.viewmodel.BlogViewModel
 
 @Composable
@@ -43,7 +44,7 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
         ) {
             Text(
                 text = selectedBlog!!.title,
-                fontSize = 22 .sp,
+                fontSize = 24 .sp,
                 fontWeight = FontWeight(600)
             )
             Spacer(modifier = Modifier.height(16 .dp))
@@ -63,7 +64,19 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
                     shape = RoundedCornerShape(8 .dp)
                 )
             )
+            Spacer(modifier = Modifier.height(16 .dp))
+            BlogBody(body = selectedBlog!!.body)
 
+        }
+    }
+}
+@Composable
+fun BlogBody(body: List<BodyBlock>){
+    Column {
+        body.forEach { block->
+            block.children.forEach {
+                Text(text = it.text)
+            }
         }
     }
 }
