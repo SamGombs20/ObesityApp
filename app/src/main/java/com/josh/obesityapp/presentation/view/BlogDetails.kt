@@ -2,10 +2,13 @@ package com.josh.obesityapp.presentation.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -30,9 +33,13 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
     val selectedBlog by blogViewModel.selectedBlog.collectAsState()
     val imageUrl = selectedBlog?.mainImage?.asset?.url ?: ""
     var isLoading by remember { mutableStateOf(true) }
+    val scrollState = rememberScrollState()
     if (selectedBlog != null){
         Column(
-            modifier = Modifier.padding(16 .dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState)
+                .padding(16 .dp),
         ) {
             Text(
                 text = selectedBlog!!.title,
@@ -56,6 +63,7 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
                     shape = RoundedCornerShape(8 .dp)
                 )
             )
+
         }
     }
 }
