@@ -47,7 +47,7 @@ fun BlogItem(blog: BlogType, onClick: () -> Unit){
     ElevatedCard(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth().padding(horizontal = 8 .dp, vertical = 4 .dp).height(120 .dp).border(
-            width = 1 .dp,
+            width = 0.5 .dp,
             brush = Brush.linearGradient(
                 colors = listOf(customBrown, customDarkGreen)
             ),
