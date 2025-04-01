@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -111,7 +113,22 @@ fun MainScreen(){
                 }
             }
             else{
-
+               TopAppBar(
+                   title = {},
+                   navigationIcon = {
+                       IconButton(
+                           onClick = {
+                               navController.popBackStack()
+                           }
+                       ) {
+                           Icon(
+                               imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                               contentDescription = stringResource(R.string.back),
+                               tint = customDarkGreen
+                           )
+                       }
+                   }
+               )
             }
         },
         bottomBar = {

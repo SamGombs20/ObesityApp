@@ -38,6 +38,7 @@
     to estimate one\'s likelihood of being overweight or obese. It also has a blog section with tips on staying
         it and healthy.
     </string>
+    <string name="back">Navigate back</string>
     <string name="no_internet">Internet connection not available!</string>
     <string name="network_message">Make sure you are connected to the internet!</string>
 
