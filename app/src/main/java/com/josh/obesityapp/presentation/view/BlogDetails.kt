@@ -69,6 +69,11 @@ fun BlogDetailsScreen(blogViewModel: BlogViewModel){
                 )
             )
             Spacer(modifier = Modifier.height(16 .dp))
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 8 .dp),
+                thickness = 1 .dp,
+                color = customDarkGreen
+            )
             BlogBody(selectedBlog!!.body)
 
         }
