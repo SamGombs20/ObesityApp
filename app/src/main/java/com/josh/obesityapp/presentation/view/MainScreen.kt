@@ -127,7 +127,10 @@ fun MainScreen(){
                                tint = customDarkGreen
                            )
                        }
-                   }
+                   },
+                   colors = TopAppBarDefaults.topAppBarColors(
+                       containerColor = Color.White
+                   )
                )
             }
         },
