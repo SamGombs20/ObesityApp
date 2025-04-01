@@ -24,8 +24,9 @@ class BlogViewModel(application: Application):AndroidViewModel(application) {
     private val _isConnected = MutableStateFlow(false)
     val isConnected: MutableStateFlow<Boolean>
         get() = _isConnected
-
-
+    private val _selectedBlog = MutableStateFlow<BlogType?>(null)
+    val selectedBlog: MutableStateFlow<BlogType?>
+        get() = _selectedBlog
     init {
         observeNetworkConnectivity()
     }
@@ -62,5 +63,8 @@ class BlogViewModel(application: Application):AndroidViewModel(application) {
             }
 
         }
+    }
+    fun setSelectedBlog(blog: BlogType){
+        _selectedBlog.value = blog
     }
 }
