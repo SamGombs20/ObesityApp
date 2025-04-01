@@ -104,7 +104,8 @@ fun NoInternet() {
         )
         Spacer(Modifier.height(32.dp))
         Text(
-            text = stringResource(R.string.network_message)
+            text = stringResource(R.string.network_message),
+            color = MaterialTheme.colorScheme.error
         )
     }
 }
