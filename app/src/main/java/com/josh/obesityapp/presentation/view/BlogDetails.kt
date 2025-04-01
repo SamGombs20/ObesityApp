@@ -76,6 +76,7 @@ fun BlogBody(body: List<BodyBlock>){
         body.forEach { block->
             block.children.forEach {
                 Text(text = it.text)
+                Spacer(modifier = Modifier.height(8 .dp))
             }
         }
     }
