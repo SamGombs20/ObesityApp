@@ -28,6 +28,8 @@ class UserInputViewModel(application: Application):AndroidViewModel(application)
     private val apiInput: State<APIInput> = _apiInput
     private val _predictionResult = MutableStateFlow("")
     val predictionResult: StateFlow<String> =  _predictionResult
+    private val _recommendationResult = MutableStateFlow("")
+    val recommendationResult: StateFlow<String> =  _recommendationResult
 
     private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
