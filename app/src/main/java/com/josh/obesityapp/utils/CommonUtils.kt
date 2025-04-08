@@ -35,3 +35,15 @@ fun formatDate(dateStr: String): String {
         "Unknown date"
     }
 }
+fun formatObesityLevel(level: String): String {
+    return when (level) {
+        "Insufficient_Weight"->"Insufficient Weight"
+        "Normal_Weight"->"Normal Weight"
+        "Overweight_Level_I"->"Overweight Level I"
+        "Overweight_Level_II"->"Overweight Level II"
+        "Obesity_Type_I"->"Obesity Type I"
+        "Obesity_Type_II"->"Obesity Type II"
+        "Obesity_Type_III"->"Obesity Type III"
+        else -> "Unknown"
+    }
+}

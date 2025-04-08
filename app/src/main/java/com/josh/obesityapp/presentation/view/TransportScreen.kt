@@ -36,6 +36,7 @@ import com.josh.obesityapp.presentation.components.FillWidthHorizontalDivider
 import com.josh.obesityapp.presentation.components.NavButton
 import com.josh.obesityapp.presentation.viewmodel.UserInputViewModel
 import com.josh.obesityapp.ui.theme.customDarkGreen
+import com.josh.obesityapp.utils.formatObesityLevel
 
 @Composable
 fun TransportScreen(navController: NavController, viewModel: UserInputViewModel){
@@ -170,7 +171,7 @@ fun TransportScreen(navController: NavController, viewModel: UserInputViewModel)
                     CustomAlert(
                         isAbout = false,
                         titleRes = R.string.result_title,
-                        messageText = prediction,
+                        messageText = formatObesityLevel(prediction),
                         recommendation = recommendation,
                         onDismiss = {
                             navController.navigate(NavigationItem.Home.route){
