@@ -75,10 +75,6 @@ fun CustomAlert(
                 if (recommendation.isNotEmpty()){
                     Spacer(Modifier.height(8 .dp))
                     Text(
-                        text = stringResource(R.string.recommendation),
-                        fontWeight = FontWeight(600)
-                    )
-                    Text(
                         text = recommendation
                     )
                 }
