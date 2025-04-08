@@ -190,6 +190,8 @@ class UserInputViewModel(application: Application):AndroidViewModel(application)
             try {
 
                 val response = repository.getPrediction(apiInput.value)
+                val recommendationResponse = repository.getRecommendation(response)
+                _recommendationResult.value = recommendationResponse.recommendation
                 _predictionResult.value = response.prediction
                 Log.d("Prediction", predictionResult.value)
             }catch (e:Exception){
