@@ -10,7 +10,7 @@ class PredictionRepository {
     suspend fun getPrediction(apiInput: APIInput):PredictionResponse{
         return obesityApiService.getPrediction(apiInput)
     }
-    suspend fun getRecommendation(predictionResponse: PredictionResponse):RecommendationResponse{
+    suspend fun getRecommendation(predictionResponse: String):RecommendationResponse{
         return obesityApiService.getRecommendation(predictionResponse)
     }
 

@@ -13,5 +13,5 @@ interface ObesityApiService{
     suspend fun getPrediction(@Body apiInput: APIInput):PredictionResponse
     @GET("/recommendation")
     suspend fun getRecommendation(
-        @Query("obesity_level") predictionResponse: PredictionResponse):RecommendationResponse
+        @Query("obesity_level") predictionResponse: String):RecommendationResponse
 }
