@@ -52,6 +52,7 @@ fun TransportScreen(navController: NavController, viewModel: UserInputViewModel)
 
     val isConnected by viewModel.isConnected
     val prediction by viewModel.predictionResult.collectAsState()
+    val recommendation by viewModel.recommendationResult.collectAsState()
     var showAlert by remember { mutableStateOf(false) }
 
     fun validateInputs(): Boolean {
@@ -170,6 +171,7 @@ fun TransportScreen(navController: NavController, viewModel: UserInputViewModel)
                         isAbout = false,
                         titleRes = R.string.result_title,
                         messageText = prediction,
+                        recommendation = recommendation,
                         onDismiss = {
                             navController.navigate(NavigationItem.Home.route){
                                 popUpTo(NavigationItem.Home.route){

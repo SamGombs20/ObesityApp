@@ -28,7 +28,7 @@ import com.josh.obesityapp.ui.theme.customDarkGreen
 
 @Composable
 fun CustomAlert(
-    titleRes:Int,isAbout:Boolean,
+    titleRes:Int,isAbout:Boolean,recommendation:String="",
     messageRes:Int?=null, messageText:String?=null,onDismiss:()->Unit,
     iconRes:Int){
     AlertDialog(
@@ -72,6 +72,16 @@ fun CustomAlert(
                     text = messageText ?: stringResource(messageRes!!),
                     fontWeight = if (!isAbout) FontWeight(600) else FontWeight.Normal
                 )
+                if (recommendation.isNotEmpty()){
+                    Spacer(Modifier.height(8 .dp))
+                    Text(
+                        text = stringResource(R.string.recommendation),
+                        fontWeight = FontWeight(600)
+                    )
+                    Text(
+                        text = recommendation
+                    )
+                }
             }
         },
         confirmButton = {

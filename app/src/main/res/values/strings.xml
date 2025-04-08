@@ -42,5 +42,6 @@
     <string name="no_internet">Internet connection not available!</string>
     <string name="network_message">Make sure you are connected to the internet!</string>
     <string name="blog">Blog</string>
+    <string name="recommendation">Our recommendations:</string>
 
 </resources>
