@@ -133,7 +133,7 @@ fun SanityImage(imageUrl: String) {
                 .build(),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.matchParentSize()
+//            modifier = Modifier.matchParentSize()
         )
     }
 }
