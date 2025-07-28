@@ -111,7 +111,7 @@ fun SanityImage(imageUrl: String) {
     Box(
         modifier = Modifier
             .width(150.dp)
-            .height(120.dp)
+            .height(150.dp)
     ) {
         if (isLoading) {
             CircularProgressIndicator(
